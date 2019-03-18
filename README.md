@@ -12,6 +12,19 @@
 
 
 ### 如何使用
+```
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+dependencies {
+	implementation 'com.github.ltym2016:QFBottomTabLayout:Tag'
+}
+```
+
 #### XML
     <com.samluys.tablib.QFBottomTabLayout
                 android:id="@+id/tl_2"
