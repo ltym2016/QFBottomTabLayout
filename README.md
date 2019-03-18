@@ -8,7 +8,9 @@
 - 支持为每个tab右上角设置红点或者数字显示
 
 ### 示例展示
-<img src="http://apidoc.qianfanyun.com/server/../Public/Uploads/2019-03-15/5c8b5cb3222bd.png" width="350"/>
+<img src="https://github.com/ltym2016/QFBottomTabLayout/blob/master/untitled.gif" width="350"/>
+<img src="https://github.com/ltym2016/QFBottomTabLayout/blob/fd0c189cb8669faa3a3eae2c2239fd26bd5ce057/device-2019-03-18-113907.png" width="350"/>
+
 
 ### 如何使用
 #### XML
@@ -38,36 +40,35 @@
 |  qf_publishMode | 设置发布按钮的状态 （COVER：表示覆盖在tab上  CENTER：表示发布按钮固定在中间）|
 
 ### Java代码中使用
-```
-   // 底部文字
-   private String[] mTitles = {"首页", "社区", "本地圈", "消息", "发现"};
-    // 未选中图片
-	private int[] mIconUnselectIds = {
-                R.mipmap.tab1, R.mipmap.tab2,
-                R.mipmap.tab3, R.mipmap.tab4, R.mipmap.tab5};
-	// 选中图片
-    private int[] mIconSelectIds = {
-                R.mipmap.tab1_selected, R.mipmap.tab2_selected,
-                R.mipmap.tab3_selected, R.mipmap.tab4_selected, R.mipmap.tab5_selected};
-    // 覆盖的图片以及对应的位置
-	private int[] mCoverImageIds = {0, R.mipmap.icon_cover,0, R.mipmap.icon_cover1, 0};
-    
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-    		QFBottomTabLayout mTabLayout_1 = findViewById(R.id.tl_1);
-    		private ArrayList<QFTabEntity> mTabEntities = new ArrayList<>();
-    		for (int i = 0; i < mTitles.length; i++) {
-    			 mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
-    		}
-          // 设置数据
-          mTabLayout_1.setTabData(mTabEntities);
-    	 // 设置显示数字提醒
-    	  mTanLayout_2.showMsg(3, 99);
-          // 设置红点
-    	  mTanLayout_2.showDot(2);
-		  // 设置覆盖的图片以及对应的位置
-		  mTanLayout_2.setCoverImages(mCoverImageIds);
-    }
+```java
+// 底部文字
+private String[] mTitles = {"首页", "社区", "本地圈", "消息", "发现"};
+// 未选中图片
+private int[] mIconUnselectIds = {
+	R.mipmap.tab1, R.mipmap.tab2,
+	R.mipmap.tab3, R.mipmap.tab4, R.mipmap.tab5};
+// 选中图片
+private int[] mIconSelectIds = {
+	R.mipmap.tab1_selected, R.mipmap.tab2_selected,
+	R.mipmap.tab3_selected, R.mipmap.tab4_selected, R.mipmap.tab5_selected};
+// 覆盖的图片以及对应的位置
+private int[] mCoverImageIds = {0, R.mipmap.icon_cover,0, R.mipmap.icon_cover1, 0};
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	QFBottomTabLayout mTabLayout_1 = findViewById(R.id.tl_1);
+	private ArrayList<QFTabEntity> mTabEntities = new ArrayList<>();
+	for (int i = 0; i < mTitles.length; i++) {
+		 mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+	}
+// 设置数据
+mTabLayout_1.setTabData(mTabEntities);
+// 设置显示数字提醒
+mTanLayout_2.showMsg(3, 99);
+// 设置红点
+mTanLayout_2.showDot(2);
+// 设置覆盖的图片以及对应的位置
+mTanLayout_2.setCoverImages(mCoverImageIds);
 ```
 #### 部分说明
 - 数据实例需要实现QFTabEntity接口
