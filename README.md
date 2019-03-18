@@ -96,6 +96,7 @@ public interface QFTabEntity {
 }
 ```
 - setTabData(ArrayList<QFTabEntity> tabEntitys) 设置TAB的数据源
+- setTabData(ArrayList<QFTabEntity> tabEntitys, FragmentActivity fa, int layoutId, ArrayList<Fragment> fragments) 关联数据支持同时切换fragments
 - setCoverImages(int[] coverImages) 在qf_publishMode="COVER" 情况下，设置覆盖图片的资源以及对应的位置信息
 - showMsg(position, num)
   - position tab位置
