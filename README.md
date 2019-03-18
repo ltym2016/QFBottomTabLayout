@@ -13,14 +13,14 @@
 
 ### 如何使用
 #### XML
-    <com.qianfanyun.uilib.widget.tab.QFBottomTabLayout
-                    android:id="@+id/tl_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:qf_textSelectColor="#2C97DE"
-                    app:qf_textUnselectColor="#66000000"
-                    app:qf_background="@color/color_fafafa"
-                    app:qf_publishMode="COVER"/>
+    <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_publishMode="COVER"/>
 #### 属性说明
 | 自定义属性  | 说明  |
 | ------------ | ------------ |
