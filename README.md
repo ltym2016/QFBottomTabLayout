@@ -8,8 +8,7 @@
 - 支持为每个tab右上角设置红点或者数字显示
 
 ### 示例展示
-<img src="https://github.com/ltym2016/QFBottomTabLayout/blob/master/untitled.gif" width="350"/>
-<img src="https://github.com/ltym2016/QFBottomTabLayout/blob/fd0c189cb8669faa3a3eae2c2239fd26bd5ce057/device-2019-03-18-113907.png" width="350"/>
+<img src="https://github.com/ltym2016/QFBottomTabLayout/blob/master/untitled.gif" width="350"/> <img src="https://github.com/ltym2016/QFBottomTabLayout/blob/fd0c189cb8669faa3a3eae2c2239fd26bd5ce057/device-2019-03-18-113907.png" width="350"/>
 
 
 ### 如何使用
@@ -103,3 +102,5 @@ public interface OnTabSelectListener {
 	void onDoubleClick(int position);
 }
 ```
+### Thanks
+[FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
