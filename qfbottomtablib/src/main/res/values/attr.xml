@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="QFBottomTabLayout">
+
+        <attr name="qf_publishMode" format="enum">
+            <enum name="COVER" value="1"/>
+            <enum name="CENTER" value="2"/>
+        </attr>
+
+        <!-- tab -->
+        <attr name="qf_tab_padding"/>
+        <attr name="qf_tab_space_equal"/>
+        <attr name="qf_tab_width"/>
+        <attr name="qf_background" format="enum"/>
+
+        <!-- title -->
+        <attr name="qf_textsize"/>
+        <attr name="qf_textSelectColor"/>
+        <attr name="qf_textUnselectColor"/>
+        <attr name="qf_textBold"/>
+        <attr name="qf_textAllCaps"/>
+        <!-- 设置文字是否可见 -->
+        <attr name="qf_textVisible" format="boolean"/>
+
+        <!-- 设置icon宽度 -->
+        <attr name="qf_iconWidth" format="dimension"/>
+        <!-- 设置icon高度 -->
+        <attr name="qf_iconHeight" format="dimension"/>
+        <!-- 设置icon是否可见 -->
+        <attr name="qf_iconVisible" format="boolean"/>
+        <!-- 设置icon与文字间距 -->
+        <attr name="qf_iconMargin" format="dimension"/>
+        <!-- 发布按钮在中间的图片-->
+        <attr name="qf_centerPublishIcon" format="reference"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="MsgView">
+        <!-- 圆角矩形背景色 -->
+        <attr name="mv_backgroundColor" format="color"/>
+        <!-- 圆角弧度,单位dp-->
+        <attr name="mv_cornerRadius" format="dimension"/>
+        <!-- 圆角弧度,单位dp-->
+        <attr name="mv_strokeWidth" format="dimension"/>
+        <!-- 圆角边框颜色-->
+        <attr name="mv_strokeColor" format="color"/>
+        <!-- 圆角弧度是高度一半-->
+        <attr name="mv_isRadiusHalfHeight" format="boolean"/>
+        <!-- 圆角矩形宽高相等,取较宽高中大值-->
+        <attr name="mv_isWidthHeightEqual" format="boolean"/>
+    </declare-styleable>
+
+</resources>

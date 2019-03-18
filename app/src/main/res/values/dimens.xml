@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_left">14dp</dimen>
+    <dimen name="margin_right">14dp</dimen>
+    <dimen name="title_size">17sp</dimen>
+    <dimen name="toolbar_height">47dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="default_horizontal_margin_side">16dp</dimen>
+    <dimen name="dp14">14dp</dimen>
+    <dimen name="dp45">45dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp60">60dp</dimen>
+    <dimen name="dp70">70dp</dimen>
+    <dimen name="dp17">17dp</dimen>
+    <dimen name="dp21">21dp</dimen>
+
+    <dimen name="sp17">17sp</dimen>
+    <dimen name="sp15">15sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="default_divider_line_height">0.5dp</dimen>
+    <dimen name="custom_text_size_1">14sp</dimen>
+    <dimen name="app_margins">14dp</dimen>
+    <dimen name="qmui_list_divider_height">1px</dimen>
+</resources>

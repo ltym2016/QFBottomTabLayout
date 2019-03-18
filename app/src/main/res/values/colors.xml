@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#15BFFF</color>
+    <color name="colorPrimaryDark">#15BFFF</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="color_white">@android:color/white</color>
+    <color name="color_black">@android:color/black</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_e5e5e5">#e5e5e5</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_fdfdfd">#fdfdfd</color>
+    <color name="color_fafafa">#fafafa</color>
+    <color name="color_444444">#444444</color>
+    <!--黑色-->
+    <color name="color_222222">#222222</color>
+    <color name="black">#000000</color>
+    <color name="black20">#80000000</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="colorAccent">#B6C8DA</color>
+    <!--透明-->
+    <color name="color_pressed">#44000000</color>
+    <color name="color_50d165">#50d165</color>
+    <color name="color_DDDDDD">#DDDDDD</color>
+</resources>

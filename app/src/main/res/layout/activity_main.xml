@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="默认5栏"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_background="@color/color_fafafa"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="默认5栏 + 切换显示发布入口"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_publishMode="COVER"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="自定义导航栏TAB数量 最少2个最多6个"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_publishMode="COVER"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="纯文字"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_textsize="18sp"
+                app:qf_iconVisible="false"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="纯图片"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_textVisible="false"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="自定义发布在中间"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_publishMode="CENTER"
+                app:qf_centerPublishIcon="@mipmap/icon_center_publish"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
