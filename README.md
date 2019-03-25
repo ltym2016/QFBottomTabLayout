@@ -50,6 +50,7 @@ dependencies {
 |qf_iconMargin| 图片与文字间的间距   |
 | qf_centerPublishIcon  | 设置发布按钮固定在中间的图片  |
 |  qf_publishMode | 设置发布按钮的状态 （COVER：表示覆盖在tab上  CENTER：表示发布按钮固定在中间）|
+|  qf_themeColor | 设置主题色（此时选中的样式为设置的主题色）|
 
 ### Java代码中使用
 ```java
@@ -72,15 +73,16 @@ protected void onCreate(Bundle savedInstanceState) {
 	private ArrayList<QFTabEntity> mTabEntities = new ArrayList<>();
 	for (int i = 0; i < mTitles.length; i++) {
 		 mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+		 
+		 // 设置带有覆盖图片的数据
+		 // mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i], mCoverImageIds));
 	}
 // 设置数据
 mTabLayout_1.setTabData(mTabEntities);
 // 设置显示数字提醒
-mTanLayout_2.showMsg(3, 99);
+mTanLayout_1.showMsg(3, 99);
 // 设置红点
-mTanLayout_2.showDot(2);
-// 设置覆盖的图片以及对应的位置
-mTanLayout_2.setCoverImages(mCoverImageIds);
+mTanLayout_1.showDot(2);
 ```
 #### 部分说明
 - 数据实例需要实现QFTabEntity接口
@@ -97,7 +99,6 @@ public interface QFTabEntity {
 ```
 - setTabData(ArrayList<QFTabEntity> tabEntitys) 设置TAB的数据源
 - setTabData(ArrayList<QFTabEntity> tabEntitys, FragmentActivity fa, int layoutId, ArrayList<Fragment> fragments) 关联数据支持同时切换fragments
-- setCoverImages(int[] coverImages) 在qf_publishMode="COVER" 情况下，设置覆盖图片的资源以及对应的位置信息
 - showMsg(position, num)
   - position tab位置
   - num 未读消息的数字 超过3位显示99+
