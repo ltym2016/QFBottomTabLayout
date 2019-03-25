@@ -11,4 +11,7 @@ public interface QFTabEntity {
 
     @DrawableRes
     int getTabUnselectedIcon();
+
+    @DrawableRes
+    int getTabCoverIcon();
 }

@@ -22,6 +22,8 @@
         <attr name="qf_textAllCaps"/>
         <!-- 设置文字是否可见 -->
         <attr name="qf_textVisible" format="boolean"/>
+        <!-- 设置主题色 -->
+        <attr name="qf_themeColor" format="color"/>
 
         <!-- 设置icon宽度 -->
         <attr name="qf_iconWidth" format="dimension"/>

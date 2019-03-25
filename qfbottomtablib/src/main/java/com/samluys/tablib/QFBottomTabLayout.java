@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -17,8 +18,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 
+import androidx.annotation.ColorInt;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -65,14 +70,9 @@ public class QFBottomTabLayout extends FrameLayout {
     private long firstTab = 0;
     private long secondTab = 0;
     /**
-     * 默认显示的覆盖图片
+     * 主题色
      */
-    private int mDefaultCoverImage = R.mipmap.icon_cover;
-
-    /**
-     * 覆盖图片集合
-     */
-    private int[] mCoverImages;
+    private int mThemeColor;
 
     public QFBottomTabLayout(Context context) {
         this(context, null, 0);
@@ -84,7 +84,9 @@ public class QFBottomTabLayout extends FrameLayout {
 
     public QFBottomTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setWillNotDraw(false);//重写onDraw方法,需要调用这个方法来清除flag
+        // 因为需要重写onDraw方法，所以这里需要去掉WILL_NOT_DRAW flag
+        setWillNotDraw(false);
+        // 允许进行扩展配置
         setClipChildren(false);
         setClipToPadding(false);
 
@@ -111,8 +113,8 @@ public class QFBottomTabLayout extends FrameLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.QFBottomTabLayout);
 
         mTextsize = ta.getDimension(R.styleable.QFBottomTabLayout_qf_textsize, sp2px(13f));
-        mTextSelectColor = ta.getColor(R.styleable.QFBottomTabLayout_qf_textSelectColor, Color.parseColor("#ffffff"));
-        mTextUnselectColor = ta.getColor(R.styleable.QFBottomTabLayout_qf_textUnselectColor, Color.parseColor("#AAffffff"));
+        mTextSelectColor = ta.getColor(R.styleable.QFBottomTabLayout_qf_textSelectColor, Color.parseColor("#2C97DE"));
+        mTextUnselectColor = ta.getColor(R.styleable.QFBottomTabLayout_qf_textUnselectColor, Color.parseColor("#66000000"));
         mTextBold = ta.getInt(R.styleable.QFBottomTabLayout_qf_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.QFBottomTabLayout_qf_textAllCaps, false);
 
@@ -128,6 +130,7 @@ public class QFBottomTabLayout extends FrameLayout {
         mPublishMode = ta.getInt(R.styleable.QFBottomTabLayout_qf_publishMode, 0);
         mtextVisible = ta.getBoolean(R.styleable.QFBottomTabLayout_qf_textVisible, true);
         mCenterPublishIcon = ta.getResourceId(R.styleable.QFBottomTabLayout_qf_centerPublishIcon, R.mipmap.icon_center_publish);
+        mThemeColor = ta.getColor(R.styleable.QFBottomTabLayout_qf_themeColor, 0);
 
         ta.recycle();
     }
@@ -156,6 +159,11 @@ public class QFBottomTabLayout extends FrameLayout {
                 @Override
                 public int getTabUnselectedIcon() {
                     return mCenterPublishIcon;
+                }
+
+                @Override
+                public int getTabCoverIcon() {
+                    return 0;
                 }
             };
 
@@ -210,7 +218,6 @@ public class QFBottomTabLayout extends FrameLayout {
         FrameLayout rl_tab = tabView.findViewById(R.id.rl_tab);
         rl_tab.setBackgroundColor(mBackgroundColor);
 
-
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -224,7 +231,7 @@ public class QFBottomTabLayout extends FrameLayout {
                     secondTab = 0;
 
                     if (mListener != null) {
-                        // 只有在覆盖不显示的情况下才会有双击效果
+                        // 只有在覆图片不显示的情况下才会有双击效果
                         if (mPublishMode != 1 || publish.getVisibility() != VISIBLE) {
                             mListener.onDoubleClick(position);
                         }
@@ -279,6 +286,12 @@ public class QFBottomTabLayout extends FrameLayout {
                 if (!TextUtils.isEmpty(tv_tab_title.getText().toString())) {
                     tv_tab_title.setVisibility(VISIBLE);
                 }
+
+                // 设置主题色的情况下优先使用主题色
+                if(mThemeColor != 0) {
+                    mTextSelectColor = mThemeColor;
+                }
+
                 tv_tab_title.setTextColor(i == mCurrentTab ? mTextSelectColor : mTextUnselectColor);
                 tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextsize);
                 if (mTextAllCaps) {
@@ -298,9 +311,9 @@ public class QFBottomTabLayout extends FrameLayout {
 
             ImageView publish = tabView.findViewById(R.id.publish);
             // 是否现在覆盖图片
-            if (mPublishMode == 1 && i == mCurrentTab && mCoverImages!= null && mCoverImages[i] != 0) {
+            if (mPublishMode == 1 && i == mCurrentTab && mTabEntitys.get(i).getTabCoverIcon() != 0) {
                 publish.setVisibility(VISIBLE);
-                publish.setImageResource(mCoverImages[i]);
+                publish.setImageResource(mTabEntitys.get(i).getTabCoverIcon());
             } else {
                 publish.setVisibility(GONE);
             }
@@ -309,7 +322,9 @@ public class QFBottomTabLayout extends FrameLayout {
             if (mIconVisible) {
                 iv_tab_icon.setVisibility(View.VISIBLE);
                 QFTabEntity tabEntity = mTabEntitys.get(i);
-                iv_tab_icon.setImageResource(i == mCurrentTab ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+                // 设置Tab的图片 选择和未选择
+                setTabIcon(i, i == mCurrentTab, iv_tab_icon, tabEntity);
+
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         mIconWidth <= 0 ? LinearLayout.LayoutParams.WRAP_CONTENT : (int) mIconWidth,
                         mIconHeight <= 0 ? LinearLayout.LayoutParams.WRAP_CONTENT : (int) mIconHeight);
@@ -331,20 +346,46 @@ public class QFBottomTabLayout extends FrameLayout {
             ImageView publish = tabView.findViewById(R.id.publish);
 
 
-            if (mPublishMode == 1 && isSelect && mCoverImages!= null && mCoverImages[i] != 0) {
-                publish.setImageResource(mCoverImages[position]);
+            if (mPublishMode == 1 && isSelect && mTabEntitys.get(i).getTabCoverIcon() != 0) {
+                publish.setImageResource(mTabEntitys.get(i).getTabCoverIcon());
                 publish.setVisibility(VISIBLE);
             } else {
                 publish.setVisibility(GONE);
             }
             TextView tab_title = tabView.findViewById(R.id.tv_tab_title);
+            if(mThemeColor != 0) {
+                mTextSelectColor = mThemeColor;
+            }
             tab_title.setTextColor(isSelect ? mTextSelectColor : mTextUnselectColor);
             ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
             QFTabEntity tabEntity = mTabEntitys.get(i);
-            iv_tab_icon.setImageResource(isSelect ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+            // 设置Tab的图片 选择和未选择
+            setTabIcon(i, isSelect, iv_tab_icon, tabEntity);
+
             if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                 tab_title.getPaint().setFakeBoldText(isSelect);
             }
+        }
+    }
+
+    /**
+     * 设置Tab的图片
+     * @param i
+     * @param isSelect
+     * @param iv_tab_icon
+     * @param tabEntity
+     */
+    private void setTabIcon(int i, boolean isSelect, ImageView iv_tab_icon, QFTabEntity tabEntity) {
+        if (mThemeColor != 0) {
+            if (i == mCurrentTab) {
+                iv_tab_icon.setImageDrawable(
+                        getTintDrawable(mContext, tabEntity.getTabSelectedIcon(),
+                                mThemeColor));
+            } else {
+                iv_tab_icon.setImageResource(tabEntity.getTabUnselectedIcon());
+            }
+        } else {
+            iv_tab_icon.setImageResource(isSelect ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
         }
     }
 
@@ -357,18 +398,6 @@ public class QFBottomTabLayout extends FrameLayout {
         }
         invalidate();
     }
-
-//    /**
-//     * 是否包含对应flag
-//     * 按位或
-//     */
-//    private boolean containsFlag(int flagSet, int flag) {
-//        return (flagSet | flag) == flagSet;
-//    }
-//
-//    private int getFlag(int position) {
-//        return (int) Math.pow(2, position);
-//    }
 
 
     public void setTabPadding(float tabPadding) {
@@ -451,16 +480,10 @@ public class QFBottomTabLayout extends FrameLayout {
         updateTabStyles();
     }
 
-    public void setCoverImages(int[] coverImages) {
-
-        if (coverImages.length > 6) {
-            throw new IllegalStateException("The number of Images cannot exceed 6！");
-        }
-
-        this.mCoverImages = coverImages;
+    public void setThemeColor(int themeColor) {
+        this.mThemeColor = themeColor;
         updateTabStyles();
     }
-
 
     public int getTabCount() {
         return mTabCount;
@@ -677,5 +700,21 @@ public class QFBottomTabLayout extends FrameLayout {
     protected int sp2px(float sp) {
         final float scale = this.mContext.getResources().getDisplayMetrics().scaledDensity;
         return (int) (sp * scale + 0.5f);
+    }
+
+    public static Drawable getTintDrawable(Drawable drawable, @ColorInt int color) {
+        Drawable.ConstantState state = drawable.getConstantState();
+        Drawable drawable1 = DrawableCompat.wrap(state == null ? drawable : state.newDrawable()).mutate();
+        drawable1.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        DrawableCompat.setTint(drawable1, color);
+        return drawable1;
+    }
+
+    public static Drawable getTintDrawable(Context context, int id, int color) {
+        Drawable originDrawable = ContextCompat.getDrawable(context, id);
+        if (originDrawable != null) {
+            return getTintDrawable(originDrawable, color);
+        }
+        return null;
     }
 }

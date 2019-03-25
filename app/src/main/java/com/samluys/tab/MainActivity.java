@@ -48,12 +48,19 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout_1.setTabData(mTabEntities);
 
         // 默认5栏 + 切换显示发布入口
-        mTanLayout_2.setTabData(mTabEntities);
+        ArrayList<QFTabEntity> mTabEntities2 = new ArrayList<>();
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities2.add(new TabEntity(
+                    mTitles[i],
+                    mIconSelectIds[i],
+                    mIconUnselectIds[i],
+                    mCoverImageIds[i]));
+        }
+        mTanLayout_2.setTabData(mTabEntities2);
         mTanLayout_2.showMsg(3, 99);
         mTanLayout_2.showDot(2);
         mTanLayout_2.showMsg(4, 9);
         mTanLayout_2.showMsg(1, 109);
-        mTanLayout_2.setCoverImages(mCoverImageIds);
         mTanLayout_2.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
