@@ -142,6 +142,28 @@
                 app:qf_publishMode="CENTER"
                 app:qf_centerPublishIcon="@mipmap/icon_center_publish"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:text="纯文字+发布按钮在中间"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color_333333"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                />
+
+            <com.samluys.tablib.QFBottomTabLayout
+                android:id="@+id/tl_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qf_textSelectColor="#2C97DE"
+                app:qf_textUnselectColor="#66000000"
+                app:qf_background="@color/color_fafafa"
+                app:qf_publishMode="CENTER"
+                app:qf_iconVisible="false"
+                app:qf_textsize="18sp"
+                app:qf_centerPublishIcon="@mipmap/icon_center_publish"/>
         </LinearLayout>
 
     </ScrollView>

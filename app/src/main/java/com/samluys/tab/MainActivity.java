@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         QFBottomTabLayout mTanLayout_4 = findViewById(R.id.tl_4);
         QFBottomTabLayout mTanLayout_5 = findViewById(R.id.tl_5);
         QFBottomTabLayout mTanLayout_6 = findViewById(R.id.tl_6);
+        QFBottomTabLayout mTanLayout_7 = findViewById(R.id.tl_7);
 
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
@@ -132,5 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        mTanLayout_7.setTabData(list3);
     }
 }

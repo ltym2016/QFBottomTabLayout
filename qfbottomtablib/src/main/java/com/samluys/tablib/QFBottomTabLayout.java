@@ -333,7 +333,12 @@ public class QFBottomTabLayout extends FrameLayout {
                 iv_tab_icon.setLayoutParams(lp);
             } else {
                 // 纯文字显示情况
-                iv_tab_icon.setVisibility(View.GONE);
+                if (mPublishMode == 2 && i == mTabCount/2) {
+                    iv_tab_icon.setVisibility(View.VISIBLE);
+                } else {
+                    iv_tab_icon.setVisibility(View.GONE);
+                }
+
             }
         }
     }
