@@ -22,6 +22,10 @@ public class TabEntity implements QFTabEntity {
         this.tabCoverIcon = tabCoverIcon;
     }
 
+    public TabEntity(String title) {
+        this.title = title;
+    }
+
     @Override
     public String getTabTitle() {
         return title;

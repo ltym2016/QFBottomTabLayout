@@ -726,10 +726,13 @@ public class QFBottomTabLayout extends FrameLayout {
     }
 
     public static Drawable getTintDrawable(Context context, int id, int color) {
-        Drawable originDrawable = ContextCompat.getDrawable(context, id);
-        if (originDrawable != null) {
-            return getTintDrawable(originDrawable, color);
+        if (id != 0) {
+            Drawable originDrawable = ContextCompat.getDrawable(context, id);
+            if (originDrawable != null) {
+                return getTintDrawable(originDrawable, color);
+            }
         }
+
         return null;
     }
 }

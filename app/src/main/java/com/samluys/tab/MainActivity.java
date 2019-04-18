@@ -134,6 +134,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mTanLayout_7.setTabData(list3);
+        // 自定义导航栏TAB数量 最少2个最多6个
+        ArrayList<QFTabEntity> list4 = new ArrayList<>();
+        for (int i = 0; i < mTitles.length - 1; i++) {
+            list4.add(new TabEntity(mTitles[i]));
+        }
+        mTanLayout_7.setTabData(list4);
     }
 }
