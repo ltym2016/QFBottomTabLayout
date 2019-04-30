@@ -21,7 +21,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.ltym2016:QFBottomTabLayout:1.0.5'
+	implementation 'com.github.ltym2016:QFBottomTabLayout:1.0.8'
 }
 ```
 
