@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         QFBottomTabLayout mTanLayout_5 = findViewById(R.id.tl_5);
         QFBottomTabLayout mTanLayout_6 = findViewById(R.id.tl_6);
         QFBottomTabLayout mTanLayout_7 = findViewById(R.id.tl_7);
+        QFBottomTabLayout mTanLayout_8 = findViewById(R.id.tl_8);
 
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
@@ -140,5 +141,19 @@ public class MainActivity extends AppCompatActivity {
             list4.add(new TabEntity(mTitles[i]));
         }
         mTanLayout_7.setTabData(list4);
+
+        int[] mIconUnselectIds = {
+                0, 0,
+                R.mipmap.tab3, 0, 0};
+        int[] mIconSelectIds = {
+                0,0,
+                R.mipmap.tab3_selected, 0,0};
+
+        String[] mTitles = {"首页", "社区", "", "消息", "发现"};
+        ArrayList<QFTabEntity> list8 = new ArrayList<>();
+        for (int i = 0; i < mTitles.length; i++) {
+            list8.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+        }
+        mTanLayout_8.setTabData(list8);
     }
 }
