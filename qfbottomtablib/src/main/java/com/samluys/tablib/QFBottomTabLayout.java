@@ -282,6 +282,10 @@ public class QFBottomTabLayout extends FrameLayout {
             View tabView = mTabsContainer.getChildAt(i);
             tabView.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
+
+            FrameLayout rl_tab = tabView.findViewById(R.id.rl_tab);
+            rl_tab.setBackgroundColor(mBackgroundColor);
+
             if (mtextVisible) {
                 if (!TextUtils.isEmpty(tv_tab_title.getText().toString())) {
                     tv_tab_title.setVisibility(VISIBLE);

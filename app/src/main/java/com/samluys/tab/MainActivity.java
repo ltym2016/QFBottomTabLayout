@@ -155,5 +155,6 @@ public class MainActivity extends AppCompatActivity {
             list8.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
         mTanLayout_8.setTabData(list8);
+        mTanLayout_8.setBackgroundColor(getResources().getColor(R.color.color_50d165));
     }
 }

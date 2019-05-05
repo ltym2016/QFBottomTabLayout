@@ -182,7 +182,6 @@
                 android:layout_height="wrap_content"
                 app:qf_textSelectColor="#2C97DE"
                 app:qf_textUnselectColor="#66000000"
-                app:qf_background="@color/color_fafafa"
                 app:qf_textsize="18sp"/>
         </LinearLayout>
 
