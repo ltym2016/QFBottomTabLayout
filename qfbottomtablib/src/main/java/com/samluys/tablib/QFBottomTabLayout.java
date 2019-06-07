@@ -401,18 +401,25 @@ public class QFBottomTabLayout extends FrameLayout {
     //setter and getter
     public void setCurrentTab(int currentTab) {
         this.mCurrentTab = currentTab;
+        int tempCurrenTab = -1;
         updateTabSelection(currentTab);
         if (mFragmentChangeManager != null) {
             if (mPublishMode == 2) {
                 // 中间添加按钮的位置
                 int centerAddPosition = mTabEntitys.size() / 2;
                 if (currentTab > centerAddPosition) {
-                    mFragmentChangeManager.setFragments(currentTab - 1);
+                    tempCurrenTab = currentTab - 1;
                 } else {
-                    mFragmentChangeManager.setFragments(currentTab);
+                    tempCurrenTab = currentTab;
                 }
             } else {
-                mFragmentChangeManager.setFragments(currentTab);
+                tempCurrenTab = currentTab;
+            }
+
+            if (mFragmentChangeManager.getCurrentFragment(tempCurrenTab).isAdded()) {
+                mFragmentChangeManager.showCurrentFragment(tempCurrenTab);
+            } else {
+                mFragmentChangeManager.setFragments(tempCurrenTab);
             }
         }
         invalidate();

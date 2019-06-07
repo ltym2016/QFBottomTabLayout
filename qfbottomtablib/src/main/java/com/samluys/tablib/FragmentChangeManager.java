@@ -23,21 +23,24 @@ public class FragmentChangeManager {
 
     /** 初始化fragments */
     private void initFragments() {
-        for (Fragment fragment : mFragments) {
-            mFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss();
-        }
 
-        for (Fragment fragment : mFragments) {
+        if (mCurrentTab != 0) {
             mFragmentManager.beginTransaction()
-                    .add(mContainerViewId, fragment)
-                    .hide(fragment).commitAllowingStateLoss();
+                    .add(mContainerViewId, mFragments.get(mCurrentTab)).commitAllowingStateLoss();
+        } else {
+            setFragments(0);
         }
-
-        setFragments(0);
     }
 
     /** 界面切换控制 */
     public void setFragments(int index) {
+
+        mFragmentManager.beginTransaction()
+                .add(mContainerViewId, mFragments.get(index)).commitAllowingStateLoss();
+        showCurrentFragment(index);
+    }
+
+    public void showCurrentFragment(int index) {
         for (int i = 0; i < mFragments.size(); i++) {
             FragmentTransaction ft = mFragmentManager.beginTransaction();
             Fragment fragment = mFragments.get(i);
@@ -55,7 +58,7 @@ public class FragmentChangeManager {
         return mCurrentTab;
     }
 
-    public Fragment getCurrentFragment() {
-        return mFragments.get(mCurrentTab);
+    public Fragment getCurrentFragment(int index) {
+        return mFragments.get(index);
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestFragmentActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <com.samluys.tablib.QFBottomTabLayout
+        android:id="@+id/tl_1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:qf_background="@color/color_fafafa"
+        app:qf_textSelectColor="#2C97DE"
+        android:layout_gravity="bottom"
+        app:qf_textUnselectColor="#66000000"/>
+
+</FrameLayout>

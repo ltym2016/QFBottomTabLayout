@@ -1,8 +1,11 @@
 package com.samluys.tab;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.btn_fragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, TestFragmentActivity.class));
+            }
+        });
 
         QFBottomTabLayout mTabLayout_1 = findViewById(R.id.tl_1);
         QFBottomTabLayout mTanLayout_2 = findViewById(R.id.tl_2);
@@ -77,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabPublish(int position) {
                 Toast.makeText(MainActivity.this, "点击发布按钮， 位置：" + position, Toast.LENGTH_LONG).show();
+
+
             }
 
             @Override
