@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * @author luys
@@ -181,6 +182,14 @@ public class QFBottomTabLayout extends FrameLayout {
      */
     public void setTabData(ArrayList<QFTabEntity> tabEntitys, FragmentActivity fa, int containerViewId, ArrayList<Fragment> fragments) {
         mFragmentChangeManager = new FragmentChangeManager(fa.getSupportFragmentManager(), containerViewId, fragments);
+        setTabData(tabEntitys);
+    }
+
+    /**
+     * 关联数据支持同时切换fragments
+     */
+    public void setTabData(ArrayList<QFTabEntity> tabEntitys, FragmentManager fa, int containerViewId, ArrayList<Fragment> fragments) {
+        mFragmentChangeManager = new FragmentChangeManager(fa, containerViewId, fragments);
         setTabData(tabEntitys);
     }
 
