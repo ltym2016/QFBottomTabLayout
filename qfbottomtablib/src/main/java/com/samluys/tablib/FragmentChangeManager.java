@@ -44,6 +44,7 @@ public class FragmentChangeManager {
         for (int i = 0; i < mFragments.size(); i++) {
             FragmentTransaction ft = mFragmentManager.beginTransaction();
             Fragment fragment = mFragments.get(i);
+            fragment.onResume();
             if (i == index) {
                 ft.show(fragment);
             } else {
