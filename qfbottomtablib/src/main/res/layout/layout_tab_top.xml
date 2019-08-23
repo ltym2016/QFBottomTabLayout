@@ -35,9 +35,9 @@
 
             <ImageView
                 android:id="@+id/iv_tab_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:src="@mipmap/icon_cover"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                tools:src="@mipmap/tab_test"
                 android:visibility="visible"/>
 
             <TextView
