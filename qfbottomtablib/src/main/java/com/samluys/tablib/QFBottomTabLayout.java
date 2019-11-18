@@ -339,6 +339,10 @@ public class QFBottomTabLayout extends FrameLayout {
                 // 设置Tab的图片 选择和未选择
                 setTabIcon(i, i == mCurrentTab, iv_tab_icon, tabEntity);
                 if (mPublishMode == 2 && i == mTabCount/2) {
+
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                    iv_tab_icon.setLayoutParams(lp);
+
                     continue;
                 }
 

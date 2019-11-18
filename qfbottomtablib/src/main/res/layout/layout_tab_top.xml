@@ -72,7 +72,7 @@
         android:id="@+id/publish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_cover"
+        android:src="@mipmap/ic_publish"
         android:layout_gravity="center_horizontal"
         android:visibility="gone"/>
 

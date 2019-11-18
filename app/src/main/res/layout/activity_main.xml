@@ -143,8 +143,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:qf_textSelectColor="#2C97DE"
-                app:qf_iconWidth="18dp"
-                app:qf_iconHeight="18dp"
                 app:qf_textUnselectColor="#66000000"
                 app:qf_background="@color/color_fafafa"
                 app:qf_publishMode="CENTER"
