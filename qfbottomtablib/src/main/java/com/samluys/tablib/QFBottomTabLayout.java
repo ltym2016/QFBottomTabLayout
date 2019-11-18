@@ -342,6 +342,8 @@ public class QFBottomTabLayout extends FrameLayout {
 
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
                     iv_tab_icon.setLayoutParams(lp);
+                    lp.bottomMargin = 10;
+                    lp.topMargin = 10;
 
                     continue;
                 }
