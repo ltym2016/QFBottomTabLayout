@@ -333,10 +333,14 @@ public class QFBottomTabLayout extends FrameLayout {
 
             // 显示图片
             if (mIconVisible) {
+
                 iv_tab_icon.setVisibility(View.VISIBLE);
                 QFTabEntity tabEntity = mTabEntitys.get(i);
                 // 设置Tab的图片 选择和未选择
                 setTabIcon(i, i == mCurrentTab, iv_tab_icon, tabEntity);
+                if (mPublishMode == 2 && i == mTabCount/2) {
+                    continue;
+                }
 
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         mIconWidth <= 0 ? LinearLayout.LayoutParams.WRAP_CONTENT : (int) mIconWidth,
