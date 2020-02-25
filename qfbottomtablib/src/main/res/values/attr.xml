@@ -9,15 +9,15 @@
         </attr>
 
         <!-- tab -->
-        <attr name="qf_tab_padding" format="float"/>
+        <attr name="qf_tab_padding" format="dimension"/>
         <attr name="qf_tab_space_equal" format="boolean"/>
-        <attr name="qf_tab_width" format="float"/>
+        <attr name="qf_tab_width" format="dimension"/>
         <attr name="qf_background" format="enum"/>
 
         <!-- title -->
-        <attr name="qf_textsize" format="float"/>
-        <attr name="qf_textSelectColor" format="integer"/>
-        <attr name="qf_textUnselectColor" format="integer"/>
+        <attr name="qf_textsize" format="dimension"/>
+        <attr name="qf_textSelectColor" format="color"/>
+        <attr name="qf_textUnselectColor" format="color"/>
         <attr name="qf_textBold" format="integer"/>
         <attr name="qf_textAllCaps" format="boolean"/>
         <!-- 设置文字是否可见 -->
